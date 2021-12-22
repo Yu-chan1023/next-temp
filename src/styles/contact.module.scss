@@ -1,0 +1,42 @@
+.contactPage {
+  padding: 5rem 0;
+  .contactContainer {
+    max-width: 768px;
+    width: 90%;
+    margin: 0rem auto;
+    color: #444;
+    h1 {
+      text-align: center;
+    }
+    p {
+      text-align: center;
+    }
+    form {
+      margin: 2rem 0;
+      input {
+        width: 100%;
+        padding: 0.75rem 0.5rem;
+        border: 1px solid #EEE;
+        margin-bottom: 1rem;
+      }
+      textarea {
+        width: 100%;
+        padding: 0.75rem 0.5rem;
+        border: 1px solid #EEE;
+        margin-bottom: 1rem;
+      }
+      button {
+        border-style: none;
+        color: #fff;
+        background-color: cadetblue;
+        border-radius: 4px;
+        padding: 1rem 0;
+        text-align: center;
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+.header {
+  .headerInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 90%;
+    height: 5rem;
+    &__navLists {
+      display: flex;
+      align-items: center;
+      li {
+        margin-left: 1.5rem;
+      }
+    }
+  }
+}
+
+.footerInner {
+  span {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    background-color: cadetblue;
+    color: #fff;
+    height: 5rem;
+    line-height: 5rem;
+  }
+}
+
+.defaultWrapper {
+  height: calc(100vh - 10rem);
+}

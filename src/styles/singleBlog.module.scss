@@ -1,0 +1,24 @@
+.singleBlogPage {
+  padding: 5rem 0;
+  color: #444;
+  .singleBlogContainer {
+    max-width: 920px;
+    width: 90%;
+    margin: 0 auto;
+    .singleBlog {
+      .singleBlogThumb {
+        border-radius: 12px;
+      }
+      .singleBlogHead {
+        margin: 0.5rem 0 2rem;
+      }
+      .singleBlogDate {
+        font-size: 14px;
+        color: #CCC;
+      }
+      .singleBlogContent {
+        font-size: 14px;
+      }
+    }
+  }
+}
