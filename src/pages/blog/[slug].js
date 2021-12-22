@@ -13,7 +13,7 @@ const SingleBlog = (props) => {
             <Image src={props.frontmatter.image} alt="ブログ画像" height={520} width={920} objectFit="cover" className={style.singleBlogThumb} />
             <span className={style.singleBlogDate}>{props.frontmatter.date}</span> 
             <h1 className={style.singleBlogHead}>{props.frontmatter.title}</h1>
-            <ReactMarkdown children={props.markdownBody}  className={style.singleBlogContent} />
+            {/* <ReactMarkdown children={props.markdownBody} className={style.singleBlogContent} /> */}
           </div> 
         </div>
       </div>
