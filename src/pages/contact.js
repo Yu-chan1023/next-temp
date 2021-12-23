@@ -1,5 +1,6 @@
 import Layout from "../components/layout"
 import * as style from "../styles/contact.module.scss" 
+import Animation from "../components/animation"
 
 const Contact = () => {
   return (
@@ -19,6 +20,7 @@ const Contact = () => {
           </form> 
         </div>
       </div>
+      <Animation />
     </Layout>
   )
 }

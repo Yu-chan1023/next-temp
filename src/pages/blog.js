@@ -3,6 +3,7 @@ import Image from "next/image"
 import matter from "gray-matter"
 import Layout from "../components/layout"
 import * as style from "../styles/blog.module.scss"
+import Animation from "../components/animation"
 
 const Blog = (props) => {
   return (
@@ -27,6 +28,7 @@ const Blog = (props) => {
           </div>
         </div>
       </div>
+      <Animation />
     </Layout>
   )
 }
