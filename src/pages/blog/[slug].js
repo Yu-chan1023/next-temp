@@ -3,6 +3,7 @@ import matter from "gray-matter"
 import ReactMarkdown from 'react-markdown'
 import Layout from "../../components/layout"
 import * as style from "../../styles/singleBlog.module.scss"
+import Animation from "../../components/animation"
 
 const SingleBlog = (props) => {
   return (
@@ -17,6 +18,7 @@ const SingleBlog = (props) => {
           </div> 
         </div>
       </div>
+      <Animation />
     </Layout>
   )
 }
