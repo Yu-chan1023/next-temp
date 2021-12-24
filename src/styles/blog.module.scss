@@ -34,6 +34,10 @@
           p {
             font-size: 14px;
             margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3; /* 制限したい行数が3の場合 */
+            overflow: hidden;
           } 
           a {
             display: block;
