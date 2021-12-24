@@ -1,20 +1,23 @@
 import Image from "next/image"
-import matter from "gray-matter"
-import ReactMarkdown from 'react-markdown'
+// import matter from "gray-matter"
+// import ReactMarkdown from 'react-markdown'
 import Layout from "../../components/layout"
 import * as style from "../../styles/singleBlog.module.scss"
 import Animation from "../../components/animation"
+import { client } from "../../libs/client"
+import Date from "../../libs/date"
 
-const SingleBlog = (props) => {
+const SingleBlog = ({ blog }) => {
+  console.log(blog)
   return (
     <Layout>
       <div className={`defaultContainer ${style.singleBlogPage}`}>
         <div className={style.singleBlogContainer}>
           <div className={style.singleBlog}>
-            <Image src={props.frontmatter.image} alt="ブログ画像" height={520} width={920} objectFit="cover" className={style.singleBlogThumb} />
-            <span className={style.singleBlogDate}>{props.frontmatter.date}</span> 
-            <h1 className={style.singleBlogHead}>{props.frontmatter.title}</h1>
-            {/* <ReactMarkdown children={props.markdownBody} className={style.singleBlogContent} /> */}
+            <img src={blog.image.url} alt="ブログ画像" height="520px" width="100%" style={{ objectFit: "cover" }} className={style.singleBlogThumb} />
+            <span className={style.singleBlogDate}><Date dateString={blog.time} /></span> 
+            <h1 className={style.singleBlogHead}>{blog.title}</h1>
+            <p className={style.singleBlogContent}>{blog.body}</p>
           </div> 
         </div>
       </div>
@@ -25,33 +28,22 @@ const SingleBlog = (props) => {
 
 export default SingleBlog
 
-export async function getStaticPaths() {
-  const blogSlugs = ((context) => {
-    const keys = context.keys()
-    const data = keys.map((key, index) => {
-      let slug = key.replace(/^.*[\\\/]/, '').slice(0, -3)
-      return slug
-    })
-    return data
-  })(require.context('../../data', true, /\.md$/))
+// 静的生成のためのパスを指定します
+export const getStaticPaths = async () => {
+  const data = await client.get({ endpoint: "blog" });
+  const paths = data.contents.map((content) => `/blog/${content.id}`);
 
-  const paths = blogSlugs.map((blogSlug) => `/blog/${blogSlug}`) 
+  return { paths, fallback: false };
+};
 
-  return {
-    paths: paths,
-    fallback: false,
-  }
-}
-
-export async function getStaticProps(context) {
-  const { slug } = context.params
-  const data = await import(`../../data/${slug}.md`)
-  const singleDocument = matter(data.default)
+// データをテンプレートに受け渡す部分の処理を記述します
+export const getStaticProps = async (context) => {
+  const id = context.params.slug;
+  const data = await client.get({ endpoint: "blog", contentId: id });
 
   return {
     props: {
-      frontmatter: singleDocument.data,         
-      markdownBody: singleDocument.content, 
-    }
-  }
-}
+      blog: data,
+    },
+  };
+};
